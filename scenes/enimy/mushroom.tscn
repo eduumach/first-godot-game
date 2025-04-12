@@ -1,6 +1,6 @@
 [gd_scene load_steps=105 format=3 uid="uid://b6nswujfrgagg"]
 
-[ext_resource type="Script" uid="uid://bhgjrvaxr442p" path="res://mushroom.gd" id="1_jokqs"]
+[ext_resource type="Script" uid="uid://bhgjrvaxr442p" path="res://scenes/enimy/mushroom.gd" id="1_jokqs"]
 [ext_resource type="Texture2D" uid="uid://c348q138fnoub" path="res://assets/Enemy/Mushroom/Mushroom-Attack.png" id="1_uxf4e"]
 [ext_resource type="Texture2D" uid="uid://dfk44anywblcr" path="res://assets/Enemy/Mushroom/Mushroom-AttackWithStun.png" id="2_jokqs"]
 [ext_resource type="Texture2D" uid="uid://btjsj6muj7rxk" path="res://assets/Enemy/Mushroom/Mushroom-Die.png" id="3_6byal"]
@@ -643,7 +643,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -715,8 +715,7 @@ script = ExtResource("1_jokqs")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_11t0p")
-animation = &"run"
-frame_progress = 0.334322
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9)

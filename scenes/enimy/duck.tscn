@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://u1upsankirfw"]
+
+[ext_resource type="Script" uid="uid://bhgjrvaxr442p" path="res://scenes/enimy/mushroom.gd" id="1_fd7dl"]
+[ext_resource type="Texture2D" uid="uid://cpswctlnc5ja" path="res://assets/Enemy/Duck/Jump Anticipation (36x36).png" id="2_iei04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps3xx"]
+atlas = ExtResource("2_iei04")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2uid"]
+atlas = ExtResource("2_iei04")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek177"]
+atlas = ExtResource("2_iei04")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clelu"]
+atlas = ExtResource("2_iei04")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11t0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps3xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2uid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek177")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clelu")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jokqs"]
+height = 22.0
+
+[node name="Duck" type="CharacterBody2D"]
+script = ExtResource("1_fd7dl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_11t0p")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_jokqs")
+
+[node name="DirectionTimer" type="Timer" parent="."]

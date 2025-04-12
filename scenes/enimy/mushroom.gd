@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var respawn_point: Vector2 = global_position
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 150
+const SPEED = 50
 const JUMP_VELOCITY = -300.0
 const GRAVITY = 980
 var jumps = 0

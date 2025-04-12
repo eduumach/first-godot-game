@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cc7juxhdxa0kj"]
+[gd_scene load_steps=18 format=4 uid="uid://cc7juxhdxa0kj"]
 
 [ext_resource type="Script" uid="uid://bu6fhc3gwqbeh" path="res://scenes/level_0.gd" id="1_7wnc2"]
 [ext_resource type="Script" uid="uid://c8i85hj26gc26" path="res://scenes/player.gd" id="2_rerym"]
@@ -7,7 +7,8 @@
 [ext_resource type="TileSet" uid="uid://bfeii7we6mi4b" path="res://tileset_level.tres" id="5_5nv5w"]
 [ext_resource type="Texture2D" uid="uid://c5aw6mmn267v5" path="res://assets/Main Characters/ninja_frog_spritesheet.png" id="5_qjcqe"]
 [ext_resource type="PackedScene" uid="uid://dalsendfxn0bi" path="res://scenes/fruit.tscn" id="7_rhhhf"]
-[ext_resource type="PackedScene" uid="uid://b6nswujfrgagg" path="res://mushroom.tscn" id="8_qjcqe"]
+[ext_resource type="PackedScene" uid="uid://b6nswujfrgagg" path="res://scenes/enimy/mushroom.tscn" id="8_qjcqe"]
+[ext_resource type="PackedScene" uid="uid://u1upsankirfw" path="res://scenes/enimy/duck.tscn" id="9_jv3i5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rerym"]
 radius = 9.0
@@ -192,4 +193,7 @@ position = Vector2(1966, 299)
 [node name="enemy" type="Node2D" parent="."]
 
 [node name="Mushroom" parent="enemy" instance=ExtResource("8_qjcqe")]
-position = Vector2(238, 172)
+position = Vector2(203, 169)
+
+[node name="Duck" parent="enemy" instance=ExtResource("9_jv3i5")]
+position = Vector2(690, 180)

@@ -1,6 +1,9 @@
 extends Node2D
+class_name Fruit
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+signal fruit_eaten
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +17,5 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Pegou fruta")
+	fruit_eaten.emit() 
 	queue_free()
