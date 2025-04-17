@@ -1,7 +1,10 @@
 extends CharacterBody2D
+class_name Eminy
 
 @onready var respawn_point: Vector2 = global_position
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+signal enemy_lean
 
 const SPEED = 50
 const JUMP_VELOCITY = -300.0
@@ -34,3 +37,6 @@ func _process(delta: float) -> void:
 		if animated_sprite_2d:
 			animated_sprite_2d.flip_h = (direction < 0)
 		global_position.x -= direction * 10
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	enemy_lean.emit()

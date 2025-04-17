@@ -6,11 +6,11 @@
 [ext_resource type="TileSet" uid="uid://msmfsnt6c6mr" path="res://tileset_textures.tres" id="3_rhhhf"]
 [ext_resource type="TileSet" uid="uid://bfeii7we6mi4b" path="res://tileset_level.tres" id="5_5nv5w"]
 [ext_resource type="Texture2D" uid="uid://c5aw6mmn267v5" path="res://assets/Main Characters/ninja_frog_spritesheet.png" id="5_qjcqe"]
-[ext_resource type="PackedScene" uid="uid://dalsendfxn0bi" path="res://scenes/fruit.tscn" id="7_rhhhf"]
 [ext_resource type="PackedScene" uid="uid://b6nswujfrgagg" path="res://scenes/enimy/mushroom.tscn" id="8_qjcqe"]
-[ext_resource type="PackedScene" uid="uid://sk76k71qbfju" path="res://scenes/fruit_random.tscn" id="8_sk60w"]
+[ext_resource type="PackedScene" uid="uid://cc8iofsu8ix1n" path="res://scenes/fruit_random.tscn" id="8_sk60w"]
 [ext_resource type="PackedScene" uid="uid://u1upsankirfw" path="res://scenes/enimy/duck.tscn" id="9_jv3i5"]
 [ext_resource type="PackedScene" uid="uid://dnkababljbalt" path="res://scenes/enimy/chicken.tscn" id="10_ll25s"]
+[ext_resource type="PackedScene" uid="uid://db7tw3ax6bkdy" path="res://scenes/checkpoint.tscn" id="11_sk60w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rerym"]
 radius = 9.0
@@ -174,37 +174,40 @@ tile_set = ExtResource("5_5nv5w")
 
 [node name="Itens" type="Node2D" parent="."]
 
-[node name="Fruit5" parent="Itens" instance=ExtResource("7_rhhhf")]
-position = Vector2(1699, 183)
+[node name="Fruit Random7" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(1679, 186)
 
-[node name="Fruit1" parent="Itens" instance=ExtResource("7_rhhhf")]
-position = Vector2(638, 47)
-
-[node name="Fruit0" parent="Itens" instance=ExtResource("7_rhhhf")]
-position = Vector2(391, 153)
-
-[node name="Fruit2" parent="Itens" instance=ExtResource("7_rhhhf")]
-position = Vector2(872, 153)
-
-[node name="Fruit3" parent="Itens" instance=ExtResource("7_rhhhf")]
-position = Vector2(1339, 185)
-
-[node name="Fruit4" parent="Itens" instance=ExtResource("7_rhhhf")]
-position = Vector2(1966, 299)
+[node name="Fruit Random6" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(2182, 426)
 
 [node name="Fruit Random" parent="Itens" instance=ExtResource("8_sk60w")]
-position = Vector2(510, 52)
+position = Vector2(1142, 186)
 
-[node name="enemy" type="Node2D" parent="."]
+[node name="Fruit Random2" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(2374, 362)
 
-[node name="Mushroom" parent="enemy" instance=ExtResource("8_qjcqe")]
-position = Vector2(203, 169)
+[node name="Fruit Random3" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(393, 149)
 
-[node name="Duck" parent="enemy" instance=ExtResource("9_jv3i5")]
+[node name="Fruit Random4" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(870, 155)
+
+[node name="Fruit Random5" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(1716, 294)
+
+[node name="Fruit Random8" parent="Itens" instance=ExtResource("8_sk60w")]
+position = Vector2(635, 56)
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Mushroom" parent="Enemy" instance=ExtResource("8_qjcqe")]
+position = Vector2(205, 170)
+
+[node name="Duck" parent="Enemy" instance=ExtResource("9_jv3i5")]
 position = Vector2(690, 180)
 
-[node name="Chicken" parent="enemy" instance=ExtResource("10_ll25s")]
+[node name="Chicken" parent="Enemy" instance=ExtResource("10_ll25s")]
 position = Vector2(2241, 552)
 
-[node name="Chicken2" parent="enemy" instance=ExtResource("10_ll25s")]
-position = Vector2(2409, 358)
+[node name="Checkpoint" parent="." instance=ExtResource("11_sk60w")]
+position = Vector2(1987, 196)
