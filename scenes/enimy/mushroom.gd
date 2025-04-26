@@ -38,5 +38,5 @@ func _process(delta: float) -> void:
 			animated_sprite_2d.flip_h = (direction < 0)
 		global_position.x -= direction * 10
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(d: Node2D) -> void:
 	enemy_lean.emit()

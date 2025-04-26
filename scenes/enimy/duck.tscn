@@ -46,6 +46,8 @@ height = 22.0
 radius = 24.0208
 
 [node name="Duck" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_fd7dl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -59,10 +61,13 @@ shape = SubResource("CapsuleShape2D_jokqs")
 
 [node name="DirectionTimer" type="Timer" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Damage"]]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 10)
+position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_iei04")
+debug_color = Color(0.984314, 0, 0, 0.419608)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

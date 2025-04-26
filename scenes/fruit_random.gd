@@ -4,7 +4,7 @@ class_name FruitRandom
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-signal fruit_eaten
+signal fruit_eaten(quantity)
 
 @export var list_fruits: Array[Texture2D]
 
@@ -20,5 +20,5 @@ func _process(delta: float) -> void:
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	fruit_eaten.emit()
+	fruit_eaten.emit(2)
 	queue_free()

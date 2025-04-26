@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcs64dmv5li7a"]
+
+[ext_resource type="Script" uid="uid://t0pptt12nn0y" path="res://scenes/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://bqs3w6oyq4lxh" path="res://assets/Items/Fruits/Apple.png" id="2_oo0fn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo0fn"]
+atlas = ExtResource("2_oo0fn")
+region = Rect2(0, 0, 32, 32)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ahhtf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_oo0fn")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
