@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=4 uid="uid://bsw4vigl7g86n"]
+
+[ext_resource type="Script" uid="uid://bu6fhc3gwqbeh" path="res://levels/level_base.gd" id="1_wj5ly"]
+[ext_resource type="PackedScene" uid="uid://bcs64dmv5li7a" path="res://levels/hud.tscn" id="2_g5705"]
+[ext_resource type="TileSet" uid="uid://msmfsnt6c6mr" path="res://levels/tileset_textures.tres" id="3_3iqh6"]
+[ext_resource type="TileSet" uid="uid://bx33mtnatd212" path="res://levels/tileset_decorations.tres" id="4_krfcf"]
+[ext_resource type="TileSet" uid="uid://bfeii7we6mi4b" path="res://levels/tileset_level.tres" id="7_c4rsr"]
+[ext_resource type="PackedScene" uid="uid://dlf1kxehr8qmm" path="res://player/player.tscn" id="7_jd1fy"]
+[ext_resource type="PackedScene" uid="uid://wtuuorstheoq" path="res://items/finish.tscn" id="9_6k8qy"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_wj5ly")
+
+[node name="HUD" parent="." instance=ExtResource("2_g5705")]
+
+[node name="Texture and details" type="Node2D" parent="."]
+
+[node name="Textures" type="TileMapLayer" parent="Texture and details"]
+tile_set = ExtResource("3_3iqh6")
+
+[node name="Decorations" type="TileMapLayer" parent="Texture and details"]
+tile_set = ExtResource("4_krfcf")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Objects" type="TileMapLayer" parent="Map"]
+tile_map_data = PackedByteArray("AACUABQAAAAEAAYAAACUABUAAAAEAAcAAACUABYAAAAEAAgAAACVABQAAAAFAAYAAACVABUAAAAFAAcAAACVABYAAAAFAAgAAACWABQAAAAGAAYAAACWABUAAAAGAAcAAACWABYAAAAGAAgAAACGACAAAAAIAAYAAACGACEAAAAIAAcAAACGACIAAAAIAAgAAACHACAAAAAJAAYAAACHACEAAAAJAAcAAACHACIAAAAJAAgAAACIACAAAAAKAAYAAACIACEAAAAKAAcAAACIACIAAAAKAAgAAACGACMAAAAIAAkAAACHACMAAAAJAAkAAACIACMAAAAKAAkAAACSABwAAAAEAAYAAACSAB0AAAAEAAcAAACSAB4AAAAEAAgAAACSAB8AAAAEAAkAAACTABwAAAAFAAYAAACTAB0AAAAFAAcAAACTAB4AAAAFAAgAAACTAB8AAAAFAAkAAACUABwAAAAGAAYAAACUAB0AAAAGAAcAAACUAB4AAAAGAAgAAACUAB8AAAAGAAkAAACGABgAAAAEAAYAAACGABkAAAAEAAcAAACGABoAAAAEAAgAAACGABsAAAAEAAkAAACHABgAAAAFAAYAAACHABkAAAAFAAcAAACHABoAAAAFAAgAAACHABsAAAAFAAkAAACIABgAAAAGAAYAAACIABkAAAAGAAcAAACIABoAAAAGAAgAAACIABsAAAAGAAkAAAA=")
+
+[node name="Ground" type="TileMapLayer" parent="Map"]
+position = Vector2(215, 196)
+tile_set = ExtResource("7_c4rsr")
+
+[node name="Itens" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Finish" parent="." instance=ExtResource("9_6k8qy")]
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("7_jd1fy")]

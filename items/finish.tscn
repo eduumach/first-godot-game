@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://wtuuorstheoq"]
 
-[ext_resource type="Script" uid="uid://cikaavfpfeimv" path="res://scenes/finish.gd" id="1_m504p"]
+[ext_resource type="Script" uid="uid://cikaavfpfeimv" path="res://items/finish.gd" id="1_m504p"]
 [ext_resource type="Texture2D" uid="uid://bvbed6gqaat2d" path="res://assets/Items/Checkpoints/End/End (Idle).png" id="2_2pftv"]
 [ext_resource type="Texture2D" uid="uid://bhu6rvk0sbqhd" path="res://assets/Items/Checkpoints/End/End (Pressed) (64x64).png" id="3_m504p"]
 

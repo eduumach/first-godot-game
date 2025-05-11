@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dnkababljbalt"]
 
-[ext_resource type="Script" uid="uid://bhgjrvaxr442p" path="res://scenes/enimy/mushroom.gd" id="1_8rlmc"]
+[ext_resource type="Script" uid="uid://bhgjrvaxr442p" path="res://enimy/mushroom.gd" id="1_8rlmc"]
 [ext_resource type="Texture2D" uid="uid://bc1aijmt7y7ju" path="res://assets/Enemy/Chicken/Run (32x34).png" id="2_8rlmc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvat2"]

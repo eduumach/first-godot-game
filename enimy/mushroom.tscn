@@ -1,5 +1,6 @@
-[gd_scene load_steps=106 format=3 uid="uid://1q6lfwit18h1"]
+[gd_scene load_steps=106 format=3 uid="uid://b6nswujfrgagg"]
 
+[ext_resource type="Script" uid="uid://bhgjrvaxr442p" path="res://enimy/mushroom.gd" id="1_jokqs"]
 [ext_resource type="Texture2D" uid="uid://c348q138fnoub" path="res://assets/Enemy/Mushroom/Mushroom-Attack.png" id="1_uxf4e"]
 [ext_resource type="Texture2D" uid="uid://dfk44anywblcr" path="res://assets/Enemy/Mushroom/Mushroom-AttackWithStun.png" id="2_jokqs"]
 [ext_resource type="Texture2D" uid="uid://btjsj6muj7rxk" path="res://assets/Enemy/Mushroom/Mushroom-Die.png" id="3_6byal"]
@@ -7,49 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://8pfdeaa2pmfn" path="res://assets/Enemy/Mushroom/Mushroom-Idle.png" id="5_mbs7r"]
 [ext_resource type="Texture2D" uid="uid://c0twtycbx5mij" path="res://assets/Enemy/Mushroom/Mushroom-Run.png" id="6_7gwmg"]
 [ext_resource type="Texture2D" uid="uid://5e3qyrjlwpr8" path="res://assets/Enemy/Mushroom/Mushroom-Stun.png" id="7_eeiv3"]
-
-[sub_resource type="GDScript" id="GDScript_uxf4e"]
-script/source = "extends CharacterBody2D
-
-@onready var respawn_point: Vector2 = global_position
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
-const SPEED = 150
-const JUMP_VELOCITY = -300.0
-const GRAVITY = 980
-var jumps = 0
-const MAX_JUMPS = 1
-
-var direction = 1
-
-func _ready() -> void:
-	pass
-
-func _process(delta: float) -> void:
-	animated_sprite_2d.play(\"run\")
-	velocity.y += GRAVITY * delta
-	
-	velocity.x = direction * SPEED
-	
-	var was_on_floor = is_on_floor()
-	move_and_slide()
-	
-	if is_on_wall():
-		direction *= -1
-		
-		if animated_sprite_2d:
-			animated_sprite_2d.flip_h = (direction > 0)
-			
-	if was_on_floor and !is_on_floor() and velocity.y >= 0:
-		direction *= -1
-		if animated_sprite_2d:
-			animated_sprite_2d.flip_h = (direction < 0)
-		global_position.x -= direction * 10
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
 atlas = ExtResource("1_uxf4e")
@@ -685,7 +643,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -751,28 +709,32 @@ animations = [{
 radius = 12.0
 height = 32.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jokqs"]
-radius = 31.0644
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bpq0"]
+radius = 24.0208
 
 [node name="Mushroom" type="CharacterBody2D"]
-script = SubResource("GDScript_uxf4e")
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_jokqs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_11t0p")
-animation = &"run"
-frame_progress = 0.334322
-
-[node name="DirectionTimer" type="Timer" parent="."]
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9)
 shape = SubResource("CapsuleShape2D_jokqs")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DirectionTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["Damage"]]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 10)
-shape = SubResource("CircleShape2D_jokqs")
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_5bpq0")
+debug_color = Color(0.984314, 0, 0, 0.419608)
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,15 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://bsw4vigl7g86n"]
+[gd_scene load_steps=12 format=3 uid="uid://dlf1kxehr8qmm"]
 
-[ext_resource type="Script" uid="uid://bu6fhc3gwqbeh" path="res://scenes/level_base.gd" id="1_wj5ly"]
-[ext_resource type="PackedScene" uid="uid://bcs64dmv5li7a" path="res://scenes/hud.tscn" id="2_g5705"]
-[ext_resource type="TileSet" uid="uid://msmfsnt6c6mr" path="res://tileset_textures.tres" id="3_3iqh6"]
-[ext_resource type="TileSet" uid="uid://bx33mtnatd212" path="res://tileset_decorations.tres" id="4_krfcf"]
-[ext_resource type="Script" uid="uid://c8i85hj26gc26" path="res://scenes/player.gd" id="5_e41s2"]
-[ext_resource type="Texture2D" uid="uid://fwf320hgg4p" path="res://assets/Main Characters/mask_dude_spritesheet.png" id="6_moh7h"]
-[ext_resource type="TileSet" uid="uid://bfeii7we6mi4b" path="res://tileset_level.tres" id="7_c4rsr"]
-[ext_resource type="PackedScene" uid="uid://wtuuorstheoq" path="res://scenes/finish.tscn" id="9_6k8qy"]
+[ext_resource type="Script" uid="uid://c8i85hj26gc26" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://fwf320hgg4p" path="res://assets/Main Characters/mask_dude_spritesheet.png" id="2_g1dw6"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rerym"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yw30f"]
 radius = 9.0
 height = 24.0
 
@@ -125,55 +119,32 @@ _data = {
 &"walk": SubResource("Animation_qjcqe")
 }
 
-[node name="LevelBase" type="Node2D"]
-script = ExtResource("1_wj5ly")
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rkbax"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
-[node name="HUD" parent="." instance=ExtResource("2_g5705")]
-
-[node name="Texture and details" type="Node2D" parent="."]
-
-[node name="Textures" type="TileMapLayer" parent="Texture and details"]
-tile_set = ExtResource("3_3iqh6")
-
-[node name="Decorations" type="TileMapLayer" parent="Texture and details"]
-tile_set = ExtResource("4_krfcf")
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(60, 179)
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
-script = ExtResource("5_e41s2")
+script = ExtResource("1_rkbax")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-8, -3)
-texture = ExtResource("6_moh7h")
+texture = ExtResource("2_g1dw6")
 hframes = 12
 vframes = 5
 
-[node name="Body" type="CollisionShape2D" parent="Player"]
+[node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -1)
-shape = SubResource("CapsuleShape2D_rerym")
+shape = SubResource("CapsuleShape2D_yw30f")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rhhhf")
 }
 
-[node name="Map" type="Node2D" parent="."]
-
-[node name="Objects" type="TileMapLayer" parent="Map"]
-tile_map_data = PackedByteArray("AACUABQAAAAEAAYAAACUABUAAAAEAAcAAACUABYAAAAEAAgAAACVABQAAAAFAAYAAACVABUAAAAFAAcAAACVABYAAAAFAAgAAACWABQAAAAGAAYAAACWABUAAAAGAAcAAACWABYAAAAGAAgAAACGACAAAAAIAAYAAACGACEAAAAIAAcAAACGACIAAAAIAAgAAACHACAAAAAJAAYAAACHACEAAAAJAAcAAACHACIAAAAJAAgAAACIACAAAAAKAAYAAACIACEAAAAKAAcAAACIACIAAAAKAAgAAACGACMAAAAIAAkAAACHACMAAAAJAAkAAACIACMAAAAKAAkAAACSABwAAAAEAAYAAACSAB0AAAAEAAcAAACSAB4AAAAEAAgAAACSAB8AAAAEAAkAAACTABwAAAAFAAYAAACTAB0AAAAFAAcAAACTAB4AAAAFAAgAAACTAB8AAAAFAAkAAACUABwAAAAGAAYAAACUAB0AAAAGAAcAAACUAB4AAAAGAAgAAACUAB8AAAAGAAkAAACGABgAAAAEAAYAAACGABkAAAAEAAcAAACGABoAAAAEAAgAAACGABsAAAAEAAkAAACHABgAAAAFAAYAAACHABkAAAAFAAcAAACHABoAAAAFAAgAAACHABsAAAAFAAkAAACIABgAAAAGAAYAAACIABkAAAAGAAcAAACIABoAAAAGAAgAAACIABsAAAAGAAkAAAA=")
-
-[node name="Ground" type="TileMapLayer" parent="Map"]
-position = Vector2(215, 196)
-tile_set = ExtResource("7_c4rsr")
-
-[node name="Itens" type="Node2D" parent="."]
-
-[node name="Enemy" type="Node2D" parent="."]
-
-[node name="Finish" parent="." instance=ExtResource("9_6k8qy")]
-
-[node name="Checkpoints" type="Node2D" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rkbax")

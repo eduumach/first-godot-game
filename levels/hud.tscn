@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcs64dmv5li7a"]
 
-[ext_resource type="Script" uid="uid://t0pptt12nn0y" path="res://scenes/hud.gd" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://t0pptt12nn0y" path="res://levels/hud.gd" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://bqs3w6oyq4lxh" path="res://assets/Items/Fruits/Apple.png" id="2_oo0fn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oo0fn"]
