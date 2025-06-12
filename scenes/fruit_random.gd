@@ -20,5 +20,5 @@ func _process(delta: float) -> void:
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	fruit_eaten.emit(2)
+	fruit_eaten.emit(1)
 	queue_free()
